@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace Football_Manangement_System
@@ -72,6 +73,43 @@ namespace Football_Manangement_System
             }
             return topScorer;
         }
+
+        public FootballPlayer this[int index]
+        {
+            get 
+            {
+                if(index>=0 && index<Players.Count) return Players[index];
+                return null;
+
+            }
+            set 
+            {
+                if (index >= 0 && index < Players.Count)
+                    Players[index] = value;
+            }
+        }
+
+        public FootballPlayer this[int jerseyNumber,bool byNumber]
+        {
+            get
+            {
+                if (byNumber)
+                {
+                    var player = Players.FirstOrDefault(p => p.JerseyNumber == jerseyNumber);
+                    return player;
+                }
+                return null;
+               
+            }
+        }
+
+        public FootballPlayer this[string name] => Players.FirstOrDefault(p => p.Name == name);
+
+        //public int this[string position,string statistics]
+        //{
+
+        //}
+        
         
     }
 }
