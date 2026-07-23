@@ -54,5 +54,9 @@ namespace Football_Manangement_System
                 Console.WriteLine($"{player.Name}");
             }
         }
+        public List<T> GetAll()
+        {
+            return _players;
+        }
     }
 }

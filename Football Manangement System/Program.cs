@@ -60,9 +60,9 @@ class Program
         forwardSquad.AddPlayer(marmoush);
         forwardSquad.DisplayAll();
 
-        //var forwardStats = new StatsCalculator<Forward>();
-        //var allForwards = forwardSquad.GetAll();
-        //Console.WriteLine($"Forward average goals: {forwardStats.CalculateAverageGoals(allForwards)}");
+        var forwardStats = new StatsCalculator<Forward>();
+        var allForwards = forwardSquad.GetAll();
+        Console.WriteLine($"Forward average goals: {forwardStats.CalculateAverageGoals(allForwards)}");
     }
 }
 
