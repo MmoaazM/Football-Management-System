@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace Football_Manangement_System
 {
-    public class Team
+    public class Team : IEnumerable<FootballPlayer>
     {
         public string Name { get; set; }
-        public List<FootballPlayer> Players;
+        private List<FootballPlayer> Players;
         public string CoachName { get; set; }
 
         public Team(string Name,string CoachName)
@@ -73,7 +74,6 @@ namespace Football_Manangement_System
             }
             return topScorer;
         }
-
         public FootballPlayer this[int index]
         {
             get 
@@ -109,7 +109,62 @@ namespace Football_Manangement_System
         //{
 
         //}
-        
-        
+
+
+        public IEnumerator<FootballPlayer> GetEnumerator()
+        {
+            foreach (var player in Players)
+                yield return player;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public IEnumerable<FootballPlayer> GetStarPlayers()
+        {
+            foreach(var player in Players)
+            {
+                if (player.IsStarPlayer())
+                    yield return player;
+            }
+        }
+
+        public IEnumerable<FootballPlayer> GetInjuredPlayers()
+        {
+            foreach (var player in Players)
+            {
+                if (player.IsInjured)
+                    yield return player;
+            }
+        }
+
+        public IEnumerable<FootballPlayer> GetPlayersByAgeRange(int min , int max)
+        {
+            foreach (var player in Players)
+            {
+                if (player.Age>=min && player.Age<=max)
+                    yield return player;
+            }
+        }
+
+        public IEnumerable<FootballPlayer> GetPlayersSortedByGoals()
+        {
+            Players.Sort((a,b)=>b.Goals.CompareTo(a.Goals));
+
+            foreach (var player in Players)
+            { 
+                yield return player;
+            }
+        }
+
+        public IEnumerable<FootballPlayer> GetPlayersByPosition(string position)
+        {
+            foreach (var player in Players)
+            {
+                if (player.GetType().Name.Equals(position, StringComparison.OrdinalIgnoreCase);
+                    yield return player;
+            }
+        }
+
+
     }
 }
