@@ -21,11 +21,17 @@ namespace Football_Manangement_System
             }
 
             Console.WriteLine("Displaying Matching Players .....");
+            if(matchedPlayers.Count==0)
+            {
+                Console.WriteLine("No Matching Players");
+                return;
+            }
 
-            foreach(var player in players)
+            foreach(var player in matchedPlayers)
             {
                 Console.WriteLine($"Name : { player.Name}  JerseyNumber  : {player.JerseyNumber}");
             }
+            Console.WriteLine();
         }
     }
 }
