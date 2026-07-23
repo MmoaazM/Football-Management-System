@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Football_Manangement_System
+namespace Football_Manangement_System.MatchEvents
 {
     public class Match
     {
