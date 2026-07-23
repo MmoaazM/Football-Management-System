@@ -6,7 +6,7 @@ namespace Football_Manangement_System
 {
     public class Squad<T> where T:FootballPlayer // All Methods Here Need Implimentation
     {
-        private List<T> _players;
+        private List<T> _players=new();
         public void AddPlayer(T player)
         {
             if (_players.Contains(player)) return;
@@ -45,6 +45,14 @@ namespace Football_Manangement_System
         public int GetAverageRating() // How To Implement This ??
         {
             return 0;
+        }
+
+        public void DisplayAll()
+        {
+            foreach(var player in _players)
+            {
+                Console.WriteLine($"{player.Name}");
+            }
         }
     }
 }

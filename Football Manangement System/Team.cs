@@ -160,7 +160,7 @@ namespace Football_Manangement_System
         {
             foreach (var player in Players)
             {
-                if (player.GetType().Name.Equals(position, StringComparison.OrdinalIgnoreCase);
+                if (player.GetType().Name.Equals(position, StringComparison.OrdinalIgnoreCase))
                     yield return player;
             }
         }
